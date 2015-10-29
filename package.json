@@ -1,0 +1,28 @@
+{
+  "name": "bian",
+  "version": "0.0.1",
+  "description": "Data transformation",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "babel -d lib src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geastwood/bian.git"
+  },
+  "keywords": [
+    "functional",
+    "data",
+    "transformation"
+  ],
+  "author": "Fei Liu <liu.feiwood@gmail.com> (https://github.com/geastwood)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geastwood/bian/issues"
+  },
+  "homepage": "https://github.com/geastwood/bian#readme",
+  "devDependencies": {
+    "babel": "^5.8.29"
+  }
+}

@@ -1,5 +1,3 @@
-
-
 var compose = (...fns) => v => fns.reduceRight((rst, fn) => fn(rst), v);
 
 var identity = v => v;
@@ -41,15 +39,23 @@ var groupBy2 = function(obj, names) {
   ]);
 };
 
-var obj1 = {
-  somekey1: 'name1',
-  somekey2: 'value1',
-  somekey3: 'name2',
-  somekey4: 'value2',
-  somekey6: 'name4',
+var entry = (obj, names = ['key', 'value']) => {
+  var [keyProp, valueProp] = names;
+  return o2a(obj, (v, k) => ({[keyProp]: k, [valueProp]: v}), concat);
 };
 
-console.log(values(obj1));
-console.log(valuesIf(obj1, v => v.indexOf('name') >= 0 ));
-console.log(compose(v => v + 1, v => v * 2, identity)(3));
-console.log(groupBy2(obj1, ['name', 'value']))
+//var obj1 = {
+//  somekey1: 'name1',
+//  somekey2: 'value1',
+//  somekey3: 'name2',
+//  somekey4: 'value2',
+//  somekey6: 'name4',
+//};
+//
+//console.log(values(obj1));
+//console.log(valuesIf(obj1, v => v.indexOf('name') >= 0 ));
+//console.log(compose(v => v + 1, v => v * 2, identity)(3));
+//console.log(groupBy2(obj1, ['name', 'value']))
+//console.log(entry(obj1));
+//console.log(entry(obj1, ['fei', 'liu']));
+export default { compose, values, valuesIf, entry, identity };
