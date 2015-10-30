@@ -1,8 +1,4 @@
-var compose = (...fns) => v => fns.reduceRight((rst, fn) => fn(rst), v);
-
-var identity = v => v;
-
-var concat = (a1, ...arrs) => a1.concat(...arrs);
+import {compose, identity, concat} from './util';
 
 var o2a = function(obj, convert, connect, decorators = [(obj) => obj.rst]) {
   return Object.keys(obj).reduce((carry, key, i, arr) => {
@@ -44,18 +40,4 @@ var entry = (obj, names = ['key', 'value']) => {
   return o2a(obj, (v, k) => ({[keyProp]: k, [valueProp]: v}), concat);
 };
 
-//var obj1 = {
-//  somekey1: 'name1',
-//  somekey2: 'value1',
-//  somekey3: 'name2',
-//  somekey4: 'value2',
-//  somekey6: 'name4',
-//};
-//
-//console.log(values(obj1));
-//console.log(valuesIf(obj1, v => v.indexOf('name') >= 0 ));
-//console.log(compose(v => v + 1, v => v * 2, identity)(3));
-//console.log(groupBy2(obj1, ['name', 'value']))
-//console.log(entry(obj1));
-//console.log(entry(obj1, ['fei', 'liu']));
 export default { compose, values, valuesIf, entry, identity };
