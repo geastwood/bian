@@ -1,43 +1,14 @@
-import {compose, identity, concat} from './util';
+import bianObject from './BianObject';
+import bianArray from './BianArray';
 
-var o2a = function(obj, convert, connect, decorators = [(obj) => obj.rst]) {
-  return Object.keys(obj).reduce((carry, key, i, arr) => {
-    return connect(carry, compose(...decorators)({
-      v: obj[key], key, i, arr, carry,
-      rst: convert(obj[key], key, i, arr)
-    }));
-  }, []);
-};
+Object.defineProperty(Array.prototype, 'bian', {
+  value: function() {
+    return new bianArray(this);
+  }
+});
 
-var values = function(obj) {
-  return o2a(obj, identity, concat);
-};
-
-var valuesIf = function(obj, pred) {
-  return o2a(obj, (v, ...args) => {
-    return pred(v, ...args) ? v : [];
-  }, concat, [obj => {
-    return obj.rst;
-  }]);
-};
-
-var groupBy2 = function(obj, names) {
-  var [first, second] = names;
-  return o2a(obj, identity, concat, [
-    o => {
-      if (o.i % 2 === 0) {
-        return {[first]: o.rst};
-      } else {
-        o.carry[o.carry.length - 1][second] = o.rst;
-        return [];
-      }
-    }
-  ]);
-};
-
-var entry = (obj, names = ['key', 'value']) => {
-  var [keyProp, valueProp] = names;
-  return o2a(obj, (v, k) => ({[keyProp]: k, [valueProp]: v}), concat);
-};
-
-export default { compose, values, valuesIf, entry, identity };
+Object.defineProperty(Object.prototype, 'bian', {
+  value: function() {
+    return new bianObject(this);
+  }
+});
