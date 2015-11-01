@@ -16,11 +16,11 @@
 var bian = require('../lib/index');
 
 exports.values = function(t) {
-  t.deepEqual(['fei', 20], {name: 'fei', age: 20}.bian().values());
+  t.deepEqual(['fei', 20], {name: 'fei', age: 20}.bian().values().toValue());
   t.done();
 };
 
 exports.pair = function(t) {
-  t.deepEqual(({name: 'fei', age: 30}).bian().pair(), [['name', 'fei'], ['age', 30]]);
+  t.deepEqual(({name: 'fei', age: 30}).bian().pair().toValue(), [['name', 'fei'], ['age', 30]]);
   t.done();
 };

@@ -1,3 +1,4 @@
+import Bian from './Bian';
 import bianObject from './BianObject';
 import bianArray from './BianArray';
 
@@ -12,3 +13,5 @@ Object.defineProperty(Object.prototype, 'bian', {
     return new bianObject(this);
   }
 });
+
+export default Bian;

@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/geastwood/bian#readme",
   "devDependencies": {
-    "babel": "^5.8.29"
+    "babel": "^6.0.4"
   }
 }

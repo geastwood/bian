@@ -5,12 +5,16 @@ export default class BianArray extends Bian {
     super(obj);
   }
   head() {
-    return this._wrap[0];
+    this._rst = this.getValue()[0];
+    return this;
   }
   tail() {
-    if (this._wrap.length <= 1) {
-      return [];
+    var v = this.getValue();
+    if (v.length <= 1) {
+      this._rst = [];
+    } else {
+      this._rst = v.slice(1);
     }
-    return this._wrap.slice(1);
+    return this;
   }
 };
