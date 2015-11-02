@@ -14,6 +14,10 @@ export default class Bian {
   toValue() {
     return this._rst;
   }
+  call(fn) {
+    this._rst = fn.call(this, this.getValue());
+    return this;
+  }
   static compose(...args) {
     return compose.apply(null, args)
   }

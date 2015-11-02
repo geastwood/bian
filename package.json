@@ -24,6 +24,9 @@
   },
   "homepage": "https://github.com/geastwood/bian#readme",
   "devDependencies": {
-    "babel": "^6.0.4"
+    "babel": "^5.8.9"
+  },
+  "dependencies": {
+    "lodash.curry": "^3.0.2"
   }
 }

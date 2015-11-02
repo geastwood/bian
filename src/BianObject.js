@@ -6,13 +6,9 @@ export default class BianObject extends Bian {
     super(obj);
   }
   pair() {
-    var v = this.getValue();
-    this._rst = pair(v);
-    return this;
+    return this.call(v => pair(v));
   }
   values() {
-    var v = this.getValue();
-    this._rst = values(v);
-    return this;
+    return this.call(v => values(v));
   }
 };
