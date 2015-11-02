@@ -1,18 +1,3 @@
-//var obj1 = {
-//  somekey1: 'name1',
-//  somekey2: 'value1',
-//  somekey3: 'name2',
-//  somekey4: 'value2',
-//  somekey6: 'name4',
-//};
-//
-//console.log(values(obj1));
-//console.log(valuesIf(obj1, v => v.indexOf('name') >= 0 ));
-//console.log(compose(v => v + 1, v => v * 2, identity)(3));
-//console.log(groupBy2(obj1, ['name', 'value']))
-//console.log(entry(obj1));
-//console.log(entry(obj1, ['fei', 'liu']));
-
 var bian = require('../lib/index');
 
 exports.values = function(t) {
@@ -20,7 +5,34 @@ exports.values = function(t) {
   t.done();
 };
 
+exports.valueIf = function(t) {
+    t.deepEqual({name: 1, name2: 2,name3: 3, name4: 4, name5: 5, name6: 6}.bian().valuesIf(function (v) {
+        return v > 5;
+    }).toValue(), [6]);
+    t.deepEqual({name: 'fei', age: 30}.bian().valuesIf(function (v) {
+        return typeof v === 'string';
+    }).toValue(), ['fei']);
+    t.done();
+};
+
 exports.pair = function(t) {
   t.deepEqual(({name: 'fei', age: 30}).bian().pair().toValue(), [['name', 'fei'], ['age', 30]]);
   t.done();
+};
+
+exports.entry = function (t) {
+    t.deepEqual({key1: 'value1', key2: 'value2'}.bian().entry().toValue(), [
+        {
+            key: 'key1', value: 'value1'
+        },
+        {
+            key: 'key2', value: 'value2'
+        }
+    ]);
+    t.deepEqual({key1: 'value1', key2: 'value2'}.bian().entry().toValue().bian().tail().toValue(), [
+        {
+            key: 'key2', value: 'value2'
+        }
+    ]);
+    t.done();
 };

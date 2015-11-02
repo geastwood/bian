@@ -42,7 +42,5 @@ export var entry = (obj, names = ['key', 'value']) => {
 };
 
 export var pair = (obj) => {
-
   return o2a(obj, (v, k) => [[k, v]], concat);
 };
-

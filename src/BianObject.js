@@ -1,5 +1,5 @@
 import Bian from './Bian';
-import {pair, values} from './object';
+import {pair, values, valuesIf, entry} from './object';
 
 export default class BianObject extends Bian {
   constructor(obj) {
@@ -10,5 +10,11 @@ export default class BianObject extends Bian {
   }
   values() {
     return this.call(v => values(v));
+  }
+  valuesIf(fn) {
+    return this.call(v => valuesIf(v, fn));
+  }
+  entry() {
+    return this.call(v => entry(v));
   }
 };
