@@ -36,3 +36,18 @@ exports.entry = function (t) {
     ]);
     t.done();
 };
+
+exports.chunkKeysBy2 = function (t) {
+    t.deepEqual({
+        key1: 'value1',
+        key2: 'value2',
+        key3: 'value3',
+        key4: 'value4',
+        key5: 'value5',
+        key6: 'value6',
+        key7: 'value7'
+    }.bian().values().toValue().bian().chunk(2).toValue(),
+        [['value1', 'value2'], ['value3', 'value4'], ['value5', 'value6'], ['value7']]
+    );
+    t.done();
+};
