@@ -67,6 +67,7 @@ exports.unique = function (t) {
   t.deepEqual([NaN, NaN].bian().unique().toValue().length, 2);
   t.done();
 };
+
 exports.chunk = function (t) {
   t.deepEqual([1,2,3,4,5].bian().chunk(2).toValue(), [[1,2], [3,4], [5]]);
   t.deepEqual([1,1,1,1,1].bian().chunk(1).toValue(), [[1], [1], [1], [1], [1]]);

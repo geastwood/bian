@@ -22,17 +22,15 @@ exports.pair = function(t) {
 
 exports.entry = function (t) {
     t.deepEqual({key1: 'value1', key2: 'value2'}.bian().entry().toValue(), [
-        {
-            key: 'key1', value: 'value1'
-        },
-        {
-            key: 'key2', value: 'value2'
-        }
+        { key: 'key1', value: 'value1' },
+        { key: 'key2', value: 'value2' }
+    ]);
+    t.deepEqual({key1: 'value1', key2: 'value2'}.bian().entry(['k', 'v']).toValue(), [
+        { k: 'key1', v: 'value1' },
+        { k: 'key2', v: 'value2' }
     ]);
     t.deepEqual({key1: 'value1', key2: 'value2'}.bian().entry().toValue().bian().tail().toValue(), [
-        {
-            key: 'key2', value: 'value2'
-        }
+        { key: 'key2', value: 'value2' }
     ]);
     t.done();
 };

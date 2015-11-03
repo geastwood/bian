@@ -14,7 +14,7 @@ export default class BianObject extends Bian {
   valuesIf(fn) {
     return this.call(v => valuesIf(v, fn));
   }
-  entry() {
-    return this.call(v => entry(v));
+  entry(propNames) {
+    return this.call(v => entry(v, propNames));
   }
 };
