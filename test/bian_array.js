@@ -76,3 +76,23 @@ exports.chunk = function (t) {
   t.deepEqual([1,1,1,1,1].bian().chunk(6).toValue(), [[1, 1, 1, 1, 1]]);
   t.done();
 };
+
+exports.zip = function (t) {
+  t.deepEqual(
+      [[1,2,3], [true, false]].bian().zip().toValue(),
+      [[1, true], [2, false], [3, undefined]]
+  );
+  t.deepEqual(
+      [[], [true, false]].bian().zip().toValue(),
+      [[undefined, true], [undefined, false]]
+  );
+  //t.deepEqual(
+  //    [[,,,,,], [true, false]].bian().zip().toValue(),
+  //    [[undefined, true], [undefined, false]]
+  //);
+  t.deepEqual(
+      [[], []].bian().zip().toValue(),
+      []
+  );
+  t.done();
+};

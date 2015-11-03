@@ -1,6 +1,6 @@
 import Bian from './bian';
 import {get, trucy} from './util';
-import {head, last, initial, tail} from './array';
+import {head, last, initial, tail, zip} from './array';
 
 export default class BianArray extends Bian {
   constructor(obj) {
@@ -46,5 +46,8 @@ export default class BianArray extends Bian {
       }
       return rst;
     });
+  }
+  zip() {
+    return this.call(v => zip(v));
   }
 };
