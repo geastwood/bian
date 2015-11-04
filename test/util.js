@@ -36,3 +36,22 @@ exports.curry = function(t) {
   t.equal(add(2)(3), 5);
   t.done();
 };
+
+exports.splats = function(t) {
+  var fn = util.splats(function(a, b, c) {
+    return a + '-' + b + '-' + c;
+  });
+  t.deepEqual(fn([1, true, 'string']), '1-true-string');
+  t.done();
+};
+
+exports.unsplats = function (t) {
+  var fn = util.unsplats(function (arr) {
+    return arr.join('-');
+  });
+  t.equal(fn(1, true, 'string'), '1-true-string');
+  //t.equal(util.unsplats(function(a, b, c) {
+  //  return a + b + c;
+  //})([1,2,4]), 6);
+  t.done();
+};

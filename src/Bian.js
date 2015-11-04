@@ -1,4 +1,4 @@
-import { compose, identity } from './util';
+import { compose, identity, splats, unsplats} from './util';
 
 export default class Bian {
   constructor(obj) {
@@ -23,5 +23,11 @@ export default class Bian {
   }
   static identity(v) {
     return identity(v);
+  }
+  static splats(fn) {
+    return splats(fn);
+  }
+  static unsplats(fn) {
+    return unsplats(fn);
   }
 };

@@ -1,4 +1,4 @@
-import {concat} from './util';
+import {concat, identity} from './util';
 
 var reduce = (arr, convert, connect, initial = []) => {
     return arr.reduce((carry, ...args) => {
@@ -27,6 +27,9 @@ export var maxDim = arrs => {
     return reduce(arrs, arr => arr.length, Math.max, 0);
 };
 
-export var zip = (arrs) => {
-    return reduce(fill(maxDim(arrs)), (v, i) => ([arrs.map(arr => arr[i])]), concat);
+export var zip = (arrs, fn = identity) => {
+    return reduce(fill(maxDim(arrs)), (v, i) => ([fn(arrs.map(arr => arr[i]))]), concat);
 };
+
+export var zipWith = (arrs, fn) => zip(arrs, fn);
+

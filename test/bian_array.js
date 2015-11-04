@@ -1,4 +1,4 @@
-var bian = require('../lib/index');
+var Bian = require('../lib/index');
 
 exports.head = function(t) {
   t.deepEqual([1,2,3,4].bian().head().toValue(), 1);
@@ -94,6 +94,18 @@ exports.zip = function (t) {
   t.deepEqual(
       [[], []].bian().zip().toValue(),
       []
+  );
+  t.done();
+};
+
+exports.zipWith = function (t) {
+  t.deepEqual(
+      [[1,2,3], [true, false, 'string']].bian().zipWith(arr => arr.join('-')).toValue(),
+      ['1-true', '2-false', '3-string']
+  );
+  t.deepEqual(
+      [[1,2,3], [true, false, 'string']].bian().zipWith(Bian.splats((a, b, c) => a)).toValue(),
+      [1, 2, 3]
   );
   t.done();
 };

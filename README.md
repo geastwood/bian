@@ -2,6 +2,34 @@
 
 collection of often-used data transformation methods.
 
+## Static methods
+
+### identity(any) : any
+
+identity function.
+
+### compose([functions]): function
+
+reduce functions from right to left.
+
+### splats(function): function
+
+convert a function originally receives multiple arguments to a compressed array as argument
+
+```javascript
+Bian.splats((a, b, c) => a + b + c)([1, 2, 3]);
+// 6
+```
+
+### unsplats(function): function
+
+convert a function originally receive array as arguments to the splatted array as arguments, like spread
+
+```javascript
+Bian.unsplats(arr => arr.join('-'))('first', 'second', 'third');
+// 'first-second-third'
+```
+
 ## Array methods
 
 ### pick(propName) : array

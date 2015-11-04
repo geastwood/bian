@@ -31,3 +31,13 @@ exports.zip = function(t) {
     );
     t.done();
 };
+
+exports.zip = function (t) {
+    t.deepEqual(
+        arr.zipWith([[1, 2], [true, false]], function (item) {
+            return item.join('-');
+        }),
+        ['1-true', '2-false']
+    );
+    t.done();
+};
