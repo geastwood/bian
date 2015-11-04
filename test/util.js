@@ -12,7 +12,7 @@ exports.concat = function(t) {
   t.deepEqual(util.concat([1], 2), [1, 2]);
   t.deepEqual(util.concat(null, 2), [null, 2]);
   t.deepEqual(util.concat(1, 2, 3, 4, 5, [6, 7]), [1, 2, 3, 4, 5, 6, 7]);
-  t.deepEqual(util.concat([],[], 1), [1]);
+  t.deepEqual(util.concat([], [], 1), [1]);
   t.done();
 };
 
@@ -45,8 +45,8 @@ exports.splats = function(t) {
   t.done();
 };
 
-exports.unsplats = function (t) {
-  var fn = util.unsplats(function (arr) {
+exports.unsplats = function(t) {
+  var fn = util.unsplats(function(arr) {
     return arr.join('-');
   });
   t.equal(fn(1, true, 'string'), '1-true-string');
