@@ -50,8 +50,5 @@ exports.unsplats = function (t) {
     return arr.join('-');
   });
   t.equal(fn(1, true, 'string'), '1-true-string');
-  //t.equal(util.unsplats(function(a, b, c) {
-  //  return a + b + c;
-  //})([1,2,4]), 6);
   t.done();
 };
