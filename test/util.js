@@ -29,6 +29,13 @@ exports.compose = function(t) {
   t.done();
 };
 
+exports.compose2 = function(t) {
+  t.deepEqual(util.concat2([1], 2), [1, 2]);
+  t.deepEqual(util.concat2([1])(2), [1, 2]);
+  t.done();
+
+};
+
 exports.curry = function(t) {
   var add = curry(function(a, b) {
     return a + b;

@@ -1,4 +1,6 @@
 import { compose, identity, splats, unsplats} from './util';
+import {Identity, map} from './functor';
+
 export default class Bian {
   constructor(obj) {
     this._wrap = obj;
@@ -21,19 +23,23 @@ export default class Bian {
     return this;
   }
 
-  static compose(...args) {
-    return compose.apply(null, args)
-  }
-
+  /**
+   * @functor
+   * @param v
+   * @returns {Identity}
+   */
   static identity(v) {
-    return identity(v);
-  }
-
-  static splats(fn) {
-    return splats(fn);
-  }
-
-  static unsplats(fn) {
-    return unsplats(fn);
+    return new Identity(v);
   }
 };
+
+/**
+ * @param f function
+ * @param u functor
+ * @returns {*} functor
+ */
+Bian.map = map;
+Bian.splats = splats;
+Bian.unsplats = unsplats;
+Bian.compose = compose;
+Bian.identity = v => (new Identity(v));
