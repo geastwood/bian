@@ -1,5 +1,5 @@
 import { compose, identity, splats, unsplats} from './util';
-import {Identity, map} from './functor';
+import {Identity, map, ap} from './functor';
 
 export default class Bian {
   constructor(obj) {
@@ -39,6 +39,7 @@ export default class Bian {
  * @returns {*} functor
  */
 Bian.map = map;
+Bian.ap = ap;
 Bian.splats = splats;
 Bian.unsplats = unsplats;
 Bian.compose = compose;

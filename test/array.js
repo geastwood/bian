@@ -71,3 +71,17 @@ exports.group = function(t) {
   );
   t.done();
 };
+
+exports.countBy = function(t) {
+  t.deepEqual(arr.countBy([
+    {id: 1},
+    {id: 2},
+    {id: 2},
+    {id: 2}
+  ]), {
+    1: 1,
+    2: 3
+  });
+  t.done();
+};
+

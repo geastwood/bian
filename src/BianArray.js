@@ -37,6 +37,19 @@ export default class BianArray extends Bian {
     });
   }
 
+  uniqueBy(key) {
+    return this.call(v => {
+      var list = [];
+      return v.reduce((rst, item) => {
+        if (list.indexOf(item[key]) === -1) {
+          list.push(item[key]);
+          return rst.concat(item);
+        }
+        return rst;
+      }, []);
+    });
+  }
+
   compact() {
     return this.call(v => {
       return v.filter(trucy);

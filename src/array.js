@@ -2,7 +2,7 @@ import {concat, identity, splats, unsplats} from './util';
 
 var reduce = (arr, convert, connect, initial = []) => {
   return arr.reduce((carry, ...args) => {
-    return connect(carry, convert(...args));
+    return connect(carry, convert(...args, carry));
   }, initial);
 };
 
@@ -55,5 +55,17 @@ export var group = (arr, key) => {
       }
     )),
     {});
+};
+
+export var countBy = (arr, key = 'id') => {
+  return arr.reduce((carry, item) => {
+    var prop = item[key];
+    if (carry[prop]) {
+      carry[prop]++;
+    } else {
+      carry[prop] = 1;
+    }
+    return carry;
+  }, {});
 };
 

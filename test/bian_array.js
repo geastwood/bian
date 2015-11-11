@@ -110,3 +110,17 @@ exports.zipWith = function(t) {
   );
   t.done();
 };
+
+exports.uniqueBy = function(t) {
+  t.deepEqual([
+    {name: 'fei', id: 1},
+    {name: 'liu', id: 2},
+    {name: 'fl', id: 3},
+    {name: 'fei', id: 1}
+  ].bian().uniqueBy('id').toValue(), [
+    {name: 'fei', id: 1},
+    {name: 'liu', id: 2},
+    {name: 'fl', id: 3}
+  ]);
+  t.done();
+};

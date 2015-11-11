@@ -1,20 +1,23 @@
 import {curry} from 'lodash';
 
-class Functor {
-  //constructor(v) {
-  //  this._wrap = v;
-  //}
-  map() {
-    throw new Error('should not call from here');
-  }
-  //getValue() {
-  //  return this._wrap;
-  //}
-}
+export var map = curry((f, u) => u.map(f));
+export var ap = curry((a, b) => a.ap(b));
 
-export class Identity extends Functor {
+export var ctor = f => {
+  var c = (...args) => {
+    if (!(this instanceof c)) {
+      var instance = new c();
+      f.apply(instance, args);
+      return instance;
+    }
+    f.apply(this, args);
+  };
+
+  return c;
+};
+
+export class Identity {
   constructor(v) {
-    super(v);
     this.v = v;
   }
   map(f) {
@@ -22,4 +25,12 @@ export class Identity extends Functor {
   }
 }
 
-export var map = curry((f, u) => u.map(f));
+export var Sum = ctor(function(v) {
+  this.v = v;
+});
+
+Sum.prototype.ap = b => {
+  return new Sum(this.v + b.v);
+};
+
+
