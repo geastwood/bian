@@ -1,4 +1,4 @@
-import Bian from './Bian';
+import Bian from './BianWrapper';
 import bianObject from './BianObject';
 import bianArray from './BianArray';
 
